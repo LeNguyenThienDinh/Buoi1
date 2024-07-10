@@ -72,3 +72,35 @@ void tim_max(int *arr, int size) {
 	}
 	printf("Phan tu lon nhat: %d, dia chi: %p\n", *max, (void*)max);
 }
+
+void tim_chan_lon_nhat(int *arr, int size) {
+	int *maxe = NULL;
+	int *mine = NULL;
+
+	for (int i = 0; i < size; i++) {
+		if (*(arr + i) % 2 == 0) {
+			if (maxe == NULL || *(arr + i) > *maxe) {
+				maxe = arr + i;
+			}
+		}
+		else {
+			if (mine == NULL || *(arr + i) < *mine) {
+				mine = arr + i;
+			}
+		}
+	}
+
+	if (maxe) {
+		printf("Phan tu chan lon nhat: %d, dia chi: %p\n", *maxe, (void*)maxe);
+	}
+	else {
+		printf("Khong co phan tu chan trong mang\n");
+	}
+
+	if (mine) {
+		printf("Phan tu le nho nhat: %d, dia chi: %p\n", *mine, (void*)mine);
+	}
+	else {
+		printf("Khong co phan tu le trong mang\n");
+	}
+}
