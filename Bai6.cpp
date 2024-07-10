@@ -42,7 +42,17 @@ int main() {
 
 	printf("Nhap gioi tinh (nam/nu): ");
 	scanf("%s", gioi_tinh);
-
-	
+	tuoi = calculate_age(nam, current_year);
+	if ((strcmp(gioi_tinh, "nam") == 0 && (tuoi < 18 || tuoi > 62)) || (strcmp(gioi_tinh, "nu") == 0 && (tuoi < 18 || tuoi > 60)))
+	{
+		throw_error(ERR_AGE_CODE);
+	}
+	if (strcmp(gioi_tinh, "nam") != 0 && strcmp(gioi_tinh, "nu") != 0) 
+	{
+		throw_error_str(ERR_GENDER_CODE);
+	}
+	int retirement_year = (strcmp(gioi_tinh, "nam") == 0) ? (nam + 62) : (nam + 60);
+	printf("%s, gioi tinh %s, sinh ngay %02d/%02d/%d. Hien tai (nam %d) %s da %d tuoi. Thoi gian %s duoc nghi huu la thang %02d/%d.\n", ho_ten, gioi_tinh, ngay, thang, nam, current_year, ho_ten, tuoi, ho_ten, thang, retirement_year);
+	getchar();
 	return 0;
 }
