@@ -44,6 +44,7 @@ int main()
 		switch (chon)
 		{
 		case 1:
+			tim_max(arr, kc);
 			break;
 		case 2:
 			break;
